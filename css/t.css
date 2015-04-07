@@ -1,0 +1,101 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+    font: normal 1em/30px Arial,"Microsoft Yahei","黑体";
+    color: #fff;
+}
+img.bg, .container, .list{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+img.bg.bigger{
+    width: 108%;
+    margin-left: -5%;
+}
+.container{
+    z-index: 1;
+}
+.container .time-label{
+    position: absolute;
+    top: 2%;
+    width: 100%;
+    height: 30px;
+    font-weight: bold;
+    background: url(../img/time-label.png) center no-repeat;
+    text-align: center;
+    z-index: 999;
+}
+.list li{
+    position: absolute;
+    width: 40%;
+    height: 50%;
+    bottom: 20%;
+    border: 2px solid transparent;
+    border-radius: 11px;
+    -webkit-box-reflect: below 1px -webkit-gradient(linear, 0% 100%,400% 100%, from(rgba(255,255,255,0)), to(white));
+}
+.list li.left{
+    right: 55%;
+}
+.list li.right{
+    left: 55%;
+}
+.list li:hover{
+    border: 2px solid #3495ef;
+    box-shadow: 0 0 2px #3495ef;
+    cursor: pointer;
+}
+.list li img{
+    border-radius: 11px;
+}
+.list li > *{
+    position: absolute;  
+}
+.list li .timeStamp{
+    width: 90%;
+    line-height: 30px;
+    left: 3%;
+    bottom: 45px;
+}
+.list li h4{
+    width: 90%;
+    height: 45px;
+    line-height: 22px;
+    left: 3%;
+    bottom: 1%;
+}
+.time-slide{
+    width: 98%;
+    height: 42px;
+    position: absolute;
+    z-index: 999;
+    left: 1%;
+    bottom: 2%;
+    overflow: hidden;
+}
+.time-slide ul{
+    position: absolute;
+    line-height: 42px;
+    left: 0;
+    top: 0;
+    width: 9999px;
+}
+.time-slide ul li{
+    float: left;
+    width: 110px;
+    text-align: center;
+}
+.time-slide a{
+    color: #333;
+    border-radius: 5px;
+    padding: 2px .5em;
+}
+.time-slide .current a,.time-slide a:hover{
+    background: #394b5a;
+    color: #fff;
+}
