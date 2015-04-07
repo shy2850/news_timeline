@@ -53,7 +53,7 @@ img.bg.bigger{
 .list li img{
     border-radius: 11px;
 }
-.list li > *{
+.list li p, .list li h4{
     position: absolute;  
 }
 .list li .timeStamp{
