@@ -3,183 +3,400 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>还原：“德国之翼”折翼阿尔卑斯_新时空_新华网</title>
-    <meta name="keywords" content="坠机" />
-    <meta name="description" content="3月24日，德国之翼航空公司一架由西班牙巴塞罗那飞往德国西部城市杜塞尔多夫的空客A320客机，在法国南部上普罗旺斯阿尔卑斯省山区坠毁，机上144名乘客和6名机组人员无人生还。" />
-    <meta name="publishid" content="1117264.0.102.0"/>
-    <link rel="stylesheet" type="text/css" href="http://tmisc.home.news.cn/story/css/global.css">
-    <link rel="stylesheet" href="css/t.css">
+    <title>这一次，“飞人”终于停下来了_新时空_新华网</title>
+    <meta name="keywords" content="刘翔" />
+    <meta name="description" content="他曾在奥运会的发源地雅典夺得冠军，却在自家门前因伤退赛。他是中国田径的金字招牌，是集奥运会冠军、世锦赛冠军、世界纪录保持者于一身的伟大运动员。但，再伟大的运动员，也终有离开赛场的那一天。2015年4月7日，他正式宣布退役，告别“飞人”生涯。祝福刘翔！" />
+    <link rel="stylesheet" href="http://tmisc.home.news.cn/story/css/global.css">
+    <link rel="stylesheet" href="<%= request.data._build_ ? 'http://tmisc.home.news.cn/story/news_timeline/css/t.css' : 'css/t.css' %>">
 </head>
 <body>
 
-<img src="img/bg.jpg" alt="新时空背景" class="bg">  
-<img src="img/way.png" alt="事件轨道" class="bg bigger" id="way">
-<img src="img/star.png" alt="星星" class="bg" id="stars">
+<img src="http://tmisc.home.news.cn/story/news_timeline/img/bg.jpg" alt="新时空背景" class="bg">  
+<img src="http://tmisc.home.news.cn/story/news_timeline/img/way.png" alt="事件轨道" class="bg bigger" id="way">
+<img src="http://tmisc.home.news.cn/story/news_timeline/img/star.png" alt="星星" class="bg" id="stars">
 <div class="container">
-    <div class="time-label">2015年4月6日</div>
+    <div class="time-label"></div>
     <ul class="list" id="list">
         
     </ul>
     <div class="time-slide">
-        <img src="img/slide.png" alt="事件切换台" class="bg">
-        <ul id="slide"></ul>
+        <img src="http://tmisc.home.news.cn/story/news_timeline/img/slide.png" alt="事件切换台" class="bg">
+        <div class="slide-holder">
+            <ul id="slide"></ul>
+        </div>
+        <a href="javascript:void(0);" class="left" title="上一个">上一个</a>
+        <a href="javascript:void(0);" class="right" title="下一个">下一个</a>
     </div>
 </div>
 
 
 <script>
-    window.data = {
-        id:370,
-        type : "timeline",
-        hasTimeline:true,
-        picUrl : "",
-        inverted:true,
-        musicUrl:"",
-        emoticonJsonData:"http://xuan.news.cn/zt/zy_emoticon.html",
+window.data = {
+    id:411,
+    type : "news_timeline",
+    hasTimeline:true,
+    picUrl : "",
+    inverted:true,
+    musicUrl:"http://tpic.home.news.cn/xhvedio/xhvedio003/M00/06/9A/wKhME1UjUXAEAAAAAAAAAAAAAAA928.mp3",
+    emoticonJsonData:"http://xuan.news.cn/zt/LX_emoticon.html",
 
-        cover : {
-            pic : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M01/AC/3D/wKhTg1UVJC8EAAAAAAAAAAAAAAA789.jpg",
-            title : "还原：“德国之翼”折翼阿尔卑斯",
-            desc :"3月24日，德国之翼航空公司一架由西班牙巴塞罗那飞往德国西部城市杜塞尔多夫的空客A320客机，在法国南部上普罗旺斯阿尔卑斯省山区坠毁，机上144名乘客和6名机组人员无人生还。",
-            start : "开始阅读"
-        },
-        
-        content : [
-                        
-                
-                {
-                    number:0,
-                     type : "pic",
-                     typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M05/AB/FE/wKhTglUVLHoEAAAAAAAAAAAAAAA306.jpg",
-                    title: "起飞",
-                    desc: "3月24日10时左右，德国之翼航空公司4U9525次航班从西班牙巴塞罗那起飞，前往德国杜塞尔多夫。/n\r\n10时45分，客机开始从3.8万英尺（约11582米）高度下降。/n\r\n10时47分，客机发出紧急情况代码。/n\r\n10时53分，客机信号从雷达上消失，高度约6000英尺（1829米）。/n\r\n【图为2014年8月18日在德国斯图加特机场拍摄的失事飞机相同机型的资料照片。】",
-                    bgPic :  "",
-                    bgColor : "#ffffff",    
-                    url : "",               
-                    lng : 116.413191695834,
-                    lat : 39.9067855438273,
-                    time : 1427162400000,
-                    timeDes : "发生时间",
-                    locusName : "",
-                    timeStart : "2015-03-24 10时",
-                    timeEnd : "",
-                    mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20153/3019/1427715833275_66.png",
-                    zoom :4
-                }
-                ,
-                        
-                
-                {
-                    number:1,
-                     type : "pic",
-                     typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M03/AC/35/wKhTg1UVISMEAAAAAAAAAAAAAAA271.jpg",
-                    title: "确认坠毁",
-                    desc: "法国方面确认，客机在法国南部上普罗旺斯阿尔卑斯省山区坠毁，机上144名乘客和6名机组人员无人生还。乘客主要来自德国和西班牙。/n\r\n【图为3月24日，法国总统奥朗德在巴黎发表讲话。】",
-                    bgPic :  "",
-                    bgColor : "#ffffff",    
-                    url : "",               
-                    lng : 116.413191695834,
-                    lat : 39.9067855438273,
-                    time : 1427165155000,
-                    timeDes : "发生时间",
-                    locusName : "",
-                    timeStart : "2015-03-24",
-                    timeEnd : "",
-                    mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20153/3011/1427686836916_89.png",
-                    zoom :4
-                }
-                ,
-                        
-                
-                {
-                    number:2,
-                     type : "pic",
-                     typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M03/AB/BC/wKhTglUVF1YEAAAAAAAAAAAAAAA062.jpg",
-                    title: "寻获“黑匣子”",
-                    desc: "当天晚些时候，搜寻人员抵达坠机现场，寻获“黑匣子”中的舱声记录器。/n\r\n【图为3月24日，在法国南部上普罗旺斯阿尔卑斯省山区，一架直升机在失事客机残骸上空飞行。】",
-                    bgPic :  "",
-                    bgColor : "#ffffff",    
-                    url : "",               
-                    lng : 116.413191695834,
-                    lat : 39.9067855438273,
-                    time : 1427165220000,
-                    timeDes : "发生时间",
-                    locusName : "",
-                    timeStart : "2015-03-24",
-                    timeEnd : "",
-                    mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20153/3019/1427715833438_49.png",
-                    zoom :4
-                }
-                ,
-                        
-                
-                {
-                    number:3,
-                     type : "pic",
-                     typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M01/AC/35/wKhTg1UVIUoEAAAAAAAAAAAAAAA256.jpg",
-                    title: "三国领导赴坠机现场",
-                    desc: "3月25日，法德西三国领导人齐赴靠近坠机现场的法国赛讷镇。/n\r\n【图为3月25日，法国总统奥朗德（左二）和德国总理默克尔（左一）乘直升机抵达法国塞讷镇临时救援指挥部。】\r\n",
-                    bgPic :  "",
-                    bgColor : "#ffffff",    
-                    url : "",               
-                    lng : 116.413191695834,
-                    lat : 39.9067855438273,
-                    time : 1427275475000,
-                    timeDes : "发生时间",
-                    locusName : "",
-                    timeStart : "2015-03-25",
-                    timeEnd : "",
-                    mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20153/3019/1427715833514_41.png",
-                    zoom :4
-                }
-                ,
-                        
-                
-                {
-                    number:4,
-                     type : "pic",
-                     typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M06/AC/36/wKhTg1UVIbwEAAAAAAAAAAAAAAA326.jpg",
-                    title: "调查",
-                    desc: "3月25日，一名调查人员透露，一名飞行员曾被锁在驾驶舱外，试图重返驾驶舱但未成功。/n\r\n【图为3月26日，在德国莱茵兰－普法尔茨州蒙塔鲍尔市，调查人员对德国之翼失事客机副驾驶安德烈亚斯·卢比茨的家进行搜查。】",
-                    bgPic :  "",
-                    bgColor : "#ffffff",    
-                    url : "",               
-                    lng : 116.413191695834,
-                    lat : 39.9067855438273,
-                    time : 1427273458000,
-                    timeDes : "发生时间",
-                    locusName : "",
-                    timeStart : "2015-03-25",
-                    timeEnd : "",
-                    mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20153/3019/1427715833590_8.png",
-                    zoom :4
-                }
-                ,
-                        
-                
-                {
-                    number:5,
-                     type : "pic",
-                     typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M00/AB/C5/wKhTglUVGi0EAAAAAAAAAAAAAAA502.jpg",
-                    title: "副驾驶涉嫌故意降低高度",
-                    desc: "3月26日，法方调查人员在新闻发布会上证实，客机坠毁前，副驾驶安德烈亚斯·卢比茨一人操纵飞机，涉嫌故意降低高度，导致飞机撞山。/n\r\n【图为从社交媒体上获得的坠毁客机副驾驶员安德烈亚斯·卢比茨的照片。】\r\n ",
-                    bgPic :  "",
-                    bgColor : "#ffffff",    
-                    url : "",               
-                    lng : 116.413191695834,
-                    lat : 39.9067855438273,
-                    time : 1427360063000,
-                    timeDes : "发生时间",
-                    locusName : "",
-                    timeStart : "2015-03-26",
-                    timeEnd : "",
-                    mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20153/3011/1427686837232_61.png",
-                    zoom :4
-                }
-                
+    cover : {
+        pic : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M06/B8/8B/wKhTg1UjQfgEAAAAAAAAAAAAAAA310.jpg",
+        title : "这一次，“飞人”终于停下来了",
+        desc :"他曾在奥运会的发源地雅典夺得冠军，却在自家门前因伤退赛。他是中国田径的金字招牌，是集奥运会冠军、世锦赛冠军、世界纪录保持者于一身的伟大运动员。但，再伟大的运动员，也终有离开赛场的那一天。2015年4月7日，他正式宣布退役，告别“飞人”生涯。祝福刘翔！",
+        start : "“飞人”传奇"
+    },
+    
+    content : [
+                    
             
-        ]
-    };
+            {
+                number:0,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M05/B8/15/wKhTglUjNh4EAAAAAAAAAAAAAAA999.jpg",
+                title: "出生",
+                desc: "1983年7月13日9点28分，一个9斤重的男孩在上海降生了，他就是刘翔。/n（图为刘翔幼年照。）",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 426907680000,
+                timeLevel : 4,
+                timeDes : "",
+                locusName : "",
+                timeStart : "1983-07-13 09:28",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/721/1428415155004_56.png",
+                zoom :4
+            }
+            ,
+                    
+            
+            {
+                number:1,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M09/B8/70/wKhTg1UjNVkEAAAAAAAAAAAAAAA722.jpg",
+                title: "与体育结缘",
+                desc: "1990年，刘翔7岁时，被上海市管弄新村小学的校田径队教练仲锁贵选中练习田径，从此与体育结缘。/n（图为小学时候的刘翔。）",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 639450205000,
+                timeLevel : 0,
+                timeDes : "",
+                locusName : "",
+                timeStart : "1990年",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/721/1428414336862_91.png",
+                zoom :4
+            }
+            ,
+                    
+            
+            {
+                number:2,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M05/B8/18/wKhTglUjN0YEAAAAAAAAAAAAAAA923.jpg",
+                title: "记忆中第一个冠军",
+                desc: "1996年，在一次市100米跑步比赛后，刘翔被上海体育运动技术学院田径队二线队教练方水泉看中，随后开始练习跨栏。/n刘翔在1996年获得上海市少年田径锦标赛乙组冠军。这是刘翔记忆中获得的第一个跨栏冠军。/n（图为中学时期的刘翔。）",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 828839036000,
+                timeLevel : 0,
+                timeDes : "",
+                locusName : "",
+                timeStart : "1996年",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/85/1428443336344_53.png",
+                zoom :4
+            }
+            ,
+                    
+            
+            {
+                number:3,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M04/B8/6A/wKhTg1UjM-0EAAAAAAAAAAAAAAA207.jpg",
+                title: "与孙海平结缘",
+                desc: "1999年3月，在孙海平的全力争取下，刘翔回到了二少体练习跨栏，并进入一线队伍。从此刘翔与师傅孙海平结缘。/n（图为孙海平与刘翔。）",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 920768653000,
+                timeLevel : 1,
+                timeDes : "",
+                locusName : "",
+                timeStart : "1999-03",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/721/1428415155242_7.png",
+                zoom :4
+            }
+            ,
+                    
+            
+            {
+                number:4,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M07/B8/1F/wKhTglUjOe0EAAAAAAAAAAAAAAA849.jpg",
+                title: "第一个世界冠军",
+                desc: "2001年5月6日，刘翔在全国田径锦标赛暨系列大奖赛上以13秒32的成绩获得第一名。/n5月24日，刘翔日本大阪东亚运动会上以13秒42夺得第一名。/n8月28日刘翔在世界大学生运动会上以13秒33的成绩获得冠军，这是中国在大运会上的首枚田径金牌，也是刘翔本人所拿到的第一个世界冠军。/n（图为刘翔夺冠后向观众致意。）",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 989111106000,
+                timeLevel : 2,
+                timeDes : "",
+                locusName : "",
+                timeStart : "2001-05-06",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/721/1428415155318_5.png",
+                zoom :4
+            }
+            ,
+                    
+            
+            {
+                number:5,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M01/B8/04/wKhTglUjMhIEAAAAAAAAAAAAAAA940.jpg",
+                title: "巅峰时刻：雅典奥运会",
+                desc: "2004年8月28日，雅典奥运会男子110米栏决赛上，刘翔以12秒91打破了奥运会纪录，并平了由英国选手科林·杰克逊创造的世界纪录，夺得了金牌，成为中国田径项目上的第一个男子奥运冠军，创造了中国人在男子110米栏项目上的神话。/n（图为刘翔在雅典奥运会男子110米栏比赛中夺得金牌。）",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 1093655197000,
+                timeLevel : 2,
+                timeDes : "",
+                locusName : "",
+                timeStart : "2004-08-28",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/721/1428415155395_58.png",
+                zoom :4
+            }
+            ,
+                    
+            
+            {
+                number:6,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M01/B8/22/wKhTglUjO3sEAAAAAAAAAAAAAAA523.jpg",
+                title: "再创辉煌：打破13年世界记录",
+                desc: "2006年7月12日，刘翔在国际田联超级大奖赛洛桑站男子110米栏的决赛中，以12秒88的成绩打破了沉睡13年之久的男子110米栏世界纪录，并夺得金牌。/n该项目原世界纪录是由刘翔和英国名将科林·杰克逊共同保持的12秒91。/n（图为2006年洛桑，刘翔以12秒88打破世界纪录。）",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 1152666440000,
+                timeLevel : 2,
+                timeDes : "",
+                locusName : "",
+                timeStart : "2006-07-12",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/721/1428414337250_80.png",
+                zoom :4
+            }
+            ,
+                    
+            
+            {
+                number:7,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M02/B8/06/wKhTglUjMpEEAAAAAAAAAAAAAAA463.jpg",
+                title: "北京奥运会退赛 9万人泪洒鸟巢",
+                desc: "2008年8月18日，在北京奥运会男子110米栏第一轮预赛中，刘翔起跑前因伤退赛。/n偌大的鸟巢，9万人陷入沉寂。/n（图为刘翔在北京奥运会上因伤退出比赛。）",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 1219021669000,
+                timeLevel : 2,
+                timeDes : "",
+                locusName : "",
+                timeStart : "2008-08-18",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/721/1428414337327_30.png",
+                zoom :4
+            }
+            ,
+                    
+            
+            {
+                number:8,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M08/B8/83/wKhTg1UjPSIEAAAAAAAAAAAAAAA183.jpg",
+                title: "复出：屈居亚军",
+                desc: "2009年9月20日，上海国际田径黄金大奖赛上，刘翔跑出和冠军特拉梅尔同样的13秒15的成绩屈居亚军。/n这是刘翔在北京奥运会退赛后首次参加比赛。/n（图为刘翔在上海黄金大奖赛的颁奖仪式上。）",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 1253408928000,
+                timeLevel : 2,
+                timeDes : "",
+                locusName : "",
+                timeStart : "2009-09-20",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/721/1428414337404_85.png",
+                zoom :4
+            }
+            ,
+                    
+            
+            {
+                number:9,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M06/B8/0A/wKhTglUjMxUEAAAAAAAAAAAAAAA946.jpg",
+                title: "二次退赛 告别伦敦",
+                desc: "2012年8月7日下午，在伦敦奥运会男子110米栏预赛中，刘翔在攻第一个栏时直接打栏摔倒在地，跟腱突发断裂，最终单腿跳过终点无缘晋级。/n（图为刘翔摔倒后单脚跳完成比赛，亲吻跨栏。）",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 1344307421000,
+                timeLevel : 2,
+                timeDes : "",
+                locusName : "",
+                timeStart : "2012-08-07",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/721/1428415155703_28.png",
+                zoom :4
+            }
+            ,
+                    
+            
+            {
+                number:10,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M08/B8/26/wKhTglUjPg0EAAAAAAAAAAAAAAA108.jpg",
+                title: "赴英国做手术",
+                desc: "2012年8月10日，刘翔在英国伦敦威灵顿医院接受手术。4天后他返回上海。/n10月4日，刘翔赴美进行康复治疗。/n（图为刘翔乘车抵达伦敦威灵顿医院接受手术治疗。）",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 1344561042000,
+                timeLevel : 2,
+                timeDes : "",
+                locusName : "",
+                timeStart : "2012-08-10",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/721/1428415155786_76.png",
+                zoom :4
+            }
+            ,
+                    
+            
+            {
+                number:11,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M09/B8/28/wKhTglUjPrwEAAAAAAAAAAAAAAA450.jpg",
+                title: "参加里约奥运会动员大会",
+                desc: "2013年11月4日，刘翔亮相中国田径队井冈山军训，参加备战2016年里约奥运会动员大会。/n（图为刘翔亮相井冈山田径队军训，穿红军军服敬礼宣誓。）",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 1383527516000,
+                timeLevel : 2,
+                timeDes : "",
+                locusName : "",
+                timeStart : "2013-11-04",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/85/1428443337047_44.png",
+                zoom :4
+            }
+            ,
+                    
+            
+            {
+                number:12,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M04/B8/5E/wKhTg1UjMZ0EAAAAAAAAAAAAAAA765.jpg",
+                title: "觅得佳人 领证结婚",
+                desc: "2014年9月8日，刘翔与葛天在上海登记结婚。/n据刘翔父母透露，葛天是刘翔的忠实粉丝，两人在2009年相识，2012年刘翔从伦敦奥运会伤退后确定恋情。/n（图为刘翔与妻子葛天。）",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 1410143336000,
+                timeLevel : 2,
+                timeDes : "",
+                locusName : "",
+                timeStart : "2014-09-08",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/85/1428443337121_42.png",
+                zoom :4
+            }
+            ,
+                    
+            
+            {
+                number:13,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M01/B8/89/wKhTg1UjQIQEAAAAAAAAAAAAAAA370.jpg",
+                title: "坦言不会参加世锦赛",
+                desc: "2015年2月3日，在北京田径世锦赛倒计时200天发布会上，刘翔坦言，自己参加世锦赛的几率已经不大。/n（图为世锦赛倒计时200天发布会上，运动员与领导们合影。）",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 1422926023000,
+                timeLevel : 2,
+                timeDes : "",
+                locusName : "",
+                timeStart : "2015-02-03",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/721/1428414337798_32.png",
+                zoom :4
+            }
+            ,
+                    
+            
+            {
+                number:14,
+                 type : "pic",
+                 typeData : "http://tpic.home.news.cn/xhCloudNewsPic/xhpic001/M04/B9/C2/wKhTg1UjnUkEAAAAAAAAAAAAAAA791.jpg",
+                title: "正式宣布退役",
+                desc: "2015年4月7日17:00 ，刘翔发布长微博《我的跑道！我的栏！》，宣布正式退役。/n刘翔写道：“这19年来，我与你们在一起的时间甚至超过了亲友，我想，也许这就是缘分，这就是爱。然而从今天起，我恐怕要离开你们了，虽然舍不得，但是我真的“病”了、“老”了，我无法再与你尽情奔跑，我无法再与你擦肩跨跃。我要“退休”了，我要开始一段新的旅程。再见！我的跑道我的栏。”/n（图为刘翔发表长微博宣布退役）。",
+                bgPic :  "",
+                bgColor : "#ffffff",    
+                url : "",               
+                lng : 116.413191695834,
+                lat : 39.9067855438273,
+                time : 1428397200000,
+                timeLevel : 2,
+                timeDes : "",
+                locusName : "",
+                timeStart : "2015-04-07",
+                timeEnd : "",
+                mapImage:"http://tmisc.home.news.cn/maptiles/mapstatic-service/maptemp/20154/85/1428443337278_57.png",
+                zoom :4
+            }
+            
+        
+    ]
+};
+
 </script>
 <script type="text/javascript" src="http://tmisc.home.news.cn/newspace/js/build_1.4.4/seed-min.js"></script>
 <script>
@@ -188,7 +405,7 @@
         packages : [{
             name : 'tl',
             ignorePackageNameInUri : true,
-            path : 'js/'
+            path : '<%= request.data._build_ ? "http://tmisc.home.news.cn/story/news_timeline/js/" : "js/"%>'
         }]
     });
     KISSY.use("tl/index");

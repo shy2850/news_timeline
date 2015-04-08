@@ -99,16 +99,44 @@ S.add("tl/dateUtil",function(S){
 
 // 列表渲染
 S.add("tl/render",function(S,D){
+    var tm = {
+        0: {
+            date: "yy年",
+            stamp: "yy年"
+        },
+        1: {
+            date: "yy年MM月",
+            stamp: "M月"
+        },
+        2: {
+            date: "yy年M月d日",
+            stamp: "M月dd日"
+        },
+        3: {
+            date: "yy年M月d日",
+            stamp: "hh:mm′"
+        },
+        4: {
+            date: "yy年M月d日",
+            stamp: "hh:mm′"
+        },
+        5: {
+            date: "yy年M月d日",
+            stamp: "hh:mm′ss″"
+        }
+    };
+
     return function(list){
         var lis = [], slides = [];
         S.each(list,function(i,idx){
-            var d = new Date();
+            var d = new Date()
+                m = tm[i.timeLevel || 4]; // 默认使用分钟级别展示
             d.setTime( i.time );
-            i.timeStamp = D.format(d, "hh时mm分");
-            i.timeDate = D.format(d, "yy年MM月dd日");
+            i.timeStamp = D.format(d, m.stamp);
+            i.timeDate = D.format(d, m.date);
 
-            slides.push( D.format(d, "hh:mm′") );
-            lis.push( '<li class="'+(idx%2?"right":"left")+'" data-timedate="{{timeDate}}" title="{{desc}}"><img class="bg" src="{{typeData}}@300x200" alt="{{title}}"/><div class="title-info"><p class="timeStamp">{{timeStamp}}</p><h4>{{title}}</h4></div></li>'.replace(/\{\{(\w+)\}\}/g,function(w,k){
+            slides.push( D.format(d, m.stamp) );
+            lis.push( '<li class="'+(idx%2?"right":"left")+'" data-timedate="{{timeDate}}" title="{{desc}}"><img class="bg" src="{{typeData}}@300x200" alt="{{title}}"/><div class="title-info"><h4>{{title}}</h4></div></li>'.replace(/\{\{(\w+)\}\}/g,function(w,k){
                 return i[k] || "";
             }) );
         });
@@ -135,7 +163,7 @@ S.add("tl/snapshot",function(S,Node){
 
             var index = p.t | 0;
             slide.css({
-                left: p.t > 2 ? ( 2 - p.t ) * 110 : 0
+                left: p.t > 2 ? ( 2 - p.t ) * 98 : 0
             });
             if( p.t == p.tar ){
                 slides.item(index).addClass("current").siblings().removeClass("current");
@@ -143,18 +171,18 @@ S.add("tl/snapshot",function(S,Node){
             lis.each(function(ele,i){
                 var pos = ele.attr("class"),
                 mgs = pos === "left" ? "margin-right" : "margin-left",
-                zoom = 1 - (i-p.t) / length * 1.5,  // 缩放相对比例
+                zoom = 1 - (i-p.t) / length * 3,  // 缩放相对比例
                 style = {
                     width: zoom * 40 + "%",
                     height: zoom * 50 + "%",
                     zIndex: length - i,
-                    marginBottom: 16 * (i - p.t) + "%"
+                    marginBottom: 13 * (i - p.t) + "%"
                 };
 
                 // 缩放过于严重的只显示图片不显示文字和标题
                 style["text-indent"] = zoom < .5 ? "-9999em" : "0";
 
-                style[mgs] = -5 * (i-p.t)/length +"%";  // 微量偏移, 使看起来远处集中一些
+                style[mgs] = -5 * (i-p.t)/Math.max(i,p.t,3) +"%";  // 微量偏移, 使看起来远处集中一些
                 style.display = i + 1 < p.t ? "none":"block";   // 景深过高, 隐藏起来
 
                 var opacity = i + 1 - p.t;  // 放大和缩小的透明度比例不同, 分别做算法
@@ -182,19 +210,6 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
         slide = $("#slide"),
         render = new Render(data.content);
 
-    // 简单视差效果
-    // doc.on("mousemove",function(e){
-    //     stars.css({
-    //         left: ( width/2 - e.clientX ) * .01
-    //     });
-    //     way.css({
-    //         left: ( e.clientX - width/2 ) * .015
-    //     });
-    //     ul.css({
-    //         left: ( e.clientX - width/2 ) * .015
-    //     });
-    // });
-
     // 列表渲染
     ul.html( render.list );
     slide.html( render.slides );
@@ -214,11 +229,24 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
         snap.on(per);
     },20);
 
+    // 所有事件绑定
     $(document).on("mousewheel",function(e){
         per.tar = per.t - e.deltaY * .25;
         per.t = per.tar;
-        e.stopPropagation();
         return false;
+    }).on("keyup",function(e){
+        switch(e.keyCode){
+            case 37:
+            case 38: per.tar = Math.floor(per.t) - 1; break;
+            case 39:
+            case 40: per.tar = Math.floor(per.t) + 1; break;
+        }
+        return false;
+    });
+    $(".time-slide").delegate("click",".left",function(){
+        per.tar = Math.floor(per.t) - 1;
+    }).delegate("click",".right",function(){
+        per.tar = Math.floor(per.t) + 1;
     });
     ul.children().on("click",function(){
         per.tar = $(this).index();

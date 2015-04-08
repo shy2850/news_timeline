@@ -39,7 +39,6 @@ img.bg.bigger{
     border: 2px solid transparent;
     border-radius: 11px;
     -webkit-box-reflect: below 1px -webkit-gradient(linear, 0% 100%,400% 100%, from(rgba(255,255,255,0)), to(white));
-    overflow: hidden;
 }
 .list li.left{
     right: 55%;
@@ -65,6 +64,7 @@ img.bg.bigger{
     -webkit-background-image: -webkit-linear-gradient(rgba(0,0,0,.0) 0%, rgba(0,0,0,.6) 100%);
     -o-background-image: -o-linear-gradient(rgba(0,0,0,.0) 0%, rgba(0,0,0,.6) 100%);
     background-image: linear-gradient(rgba(0,0,0,.0) 0%, rgba(0,0,0,.6) 100%);
+    border-radius: 0 0 11px 11px;
 }
 .list li .timeStamp, .list li h4{
     line-height: 22px;
@@ -76,32 +76,60 @@ img.bg.bigger{
 }
 .time-slide{
     width: 98%;
-    height: 42px;
+    height: 40px;
     position: absolute;
     z-index: 999;
     left: 1%;
     bottom: 6%;
+}
+.slide-holder{
+    width: 90%;
+    left: 5%;
+    position: absolute;
+    top: 0;
+    height: 40px;
     overflow: hidden;
 }
 .time-slide ul{
     position: absolute;
-    line-height: 42px;
+    line-height: 40px;
     left: 0;
     top: 0;
     width: 9999px;
 }
 .time-slide ul li{
     float: left;
-    width: 110px;
+    width: 98px;
     text-align: center;
 }
-.time-slide a{
+.time-slide ul a{
     color: #333;
     border-radius: 5px;
     padding: 2px .5em;
-    font-size: .9em;
+    font-size: .8em;
 }
-.time-slide .current a,.time-slide a:hover{
+.time-slide .current a,.time-slide ul a:hover{
     background: #394b5a;
     color: #fff;
+}
+
+.time-slide .left, .time-slide .right{
+    position: absolute;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -999em;
+    overflow: hidden;
+    border: 6px solid transparent;
+    _border: 6px solid #f8f8f8;
+    top: 14px;
+}
+.time-slide .left{
+    left: 4px;
+    border-right: 6px solid #394b5a;
+}
+.time-slide .right{
+    right: 4px;
+    border-left: 6px solid #394b5a;
 }
