@@ -29,6 +29,7 @@ img.bg.bigger{
     background: url(../img/time-label.png) center no-repeat;
     text-align: center;
     z-index: 999;
+    font-size: .9em;
 }
 .list li{
     position: absolute;
@@ -38,6 +39,7 @@ img.bg.bigger{
     border: 2px solid transparent;
     border-radius: 11px;
     -webkit-box-reflect: below 1px -webkit-gradient(linear, 0% 100%,400% 100%, from(rgba(255,255,255,0)), to(white));
+    overflow: hidden;
 }
 .list li.left{
     right: 55%;
@@ -53,21 +55,24 @@ img.bg.bigger{
 .list li img{
     border-radius: 11px;
 }
-.list li p, .list li h4{
-    position: absolute;  
+
+.list .title-info{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 60px 0 10px;
+    -webkit-background-image: -webkit-linear-gradient(rgba(0,0,0,.0) 0%, rgba(0,0,0,.6) 100%);
+    -o-background-image: -o-linear-gradient(rgba(0,0,0,.0) 0%, rgba(0,0,0,.6) 100%);
+    background-image: linear-gradient(rgba(0,0,0,.0) 0%, rgba(0,0,0,.6) 100%);
+}
+.list li .timeStamp, .list li h4{
+    line-height: 22px;
+    width: 94%;
+    margin: 0 auto;
 }
 .list li .timeStamp{
-    width: 90%;
-    line-height: 30px;
-    left: 3%;
-    bottom: 45px;
-}
-.list li h4{
-    width: 90%;
-    height: 45px;
-    line-height: 22px;
-    left: 3%;
-    bottom: 1%;
+    font-size: .9em;
 }
 .time-slide{
     width: 98%;
@@ -75,7 +80,7 @@ img.bg.bigger{
     position: absolute;
     z-index: 999;
     left: 1%;
-    bottom: 2%;
+    bottom: 6%;
     overflow: hidden;
 }
 .time-slide ul{
@@ -94,6 +99,7 @@ img.bg.bigger{
     color: #333;
     border-radius: 5px;
     padding: 2px .5em;
+    font-size: .9em;
 }
 .time-slide .current a,.time-slide a:hover{
     background: #394b5a;

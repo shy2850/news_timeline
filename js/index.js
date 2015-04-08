@@ -108,7 +108,7 @@ S.add("tl/render",function(S,D){
             i.timeDate = D.format(d, "yy年MM月dd日");
 
             slides.push( D.format(d, "hh:mm′") );
-            lis.push( '<li class="'+(idx%2?"right":"left")+'" data-timedate="{{timeDate}}" title="{{desc}}"><img class="bg" src="{{typeData}}@300x200" alt="{{title}}"/><p class="timeStamp">{{timeStamp}}</p><h4>{{title}}</h4></li>'.replace(/\{\{(\w+)\}\}/g,function(w,k){
+            lis.push( '<li class="'+(idx%2?"right":"left")+'" data-timedate="{{timeDate}}" title="{{desc}}"><img class="bg" src="{{typeData}}@300x200" alt="{{title}}"/><div class="title-info"><p class="timeStamp">{{timeStamp}}</p><h4>{{title}}</h4></div></li>'.replace(/\{\{(\w+)\}\}/g,function(w,k){
                 return i[k] || "";
             }) );
         });
@@ -158,7 +158,7 @@ S.add("tl/snapshot",function(S,Node){
                 style.display = i + 1 < p.t ? "none":"block";   // 景深过高, 隐藏起来
 
                 var opacity = i + 1 - p.t;  // 放大和缩小的透明度比例不同, 分别做算法
-                style.opacity = opacity <= 1 ? opacity : (1 - opacity / length / 2);
+                style.opacity = opacity // <= 1 ? opacity : (1 - opacity / length / 2);
                 ele.css(style);
 
                 if( i === index ){
@@ -215,8 +215,10 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
     },20);
 
     $(document).on("mousewheel",function(e){
-        per.tar = per.t + e.deltaY * .25;
+        per.tar = per.t - e.deltaY * .25;
         per.t = per.tar;
+        e.stopPropagation();
+        return false;
     });
     ul.children().on("click",function(){
         per.tar = $(this).index();
