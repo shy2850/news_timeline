@@ -105,12 +105,12 @@ S.add("tl/render",function(S,D){
             stamp: "yy年"
         },
         1: {
-            date: "yy年MM月",
-            stamp: "M月"
+            date: "yy年M月",
+            stamp: "yy年M月"
         },
         2: {
             date: "yy年M月d日",
-            stamp: "M月dd日"
+            stamp: "M月d日"
         },
         3: {
             date: "yy年M月d日",
@@ -230,6 +230,10 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
     },20);
 
     // 所有事件绑定
+    var mousedown = false,
+        downY = 0,
+        perSet = per.t,
+        body = document.body;
     $(document).on("mousewheel",function(e){
         per.tar = per.t - e.deltaY * .25;
         per.t = per.tar;
@@ -242,6 +246,20 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
             case 40: per.tar = Math.floor(per.t) + 1; break;
         }
         return false;
+    }).on("mousedown",function(e){
+        mousedown = true;
+        downY = e.clientY;
+        perSet = per.t;
+        body.style.cursor = "move";
+    }).on("mouseup",function(e){
+        mousedown = false;
+        body.style.cursor = "default";
+    }).on("mousemove",function(e){
+        if( mousedown ){
+            per.tar = perSet + ( (e.clientY - downY)/4 | 0) * .0625;
+        }
+    }).on("touchmove",function(e){
+        e.preventDefault();
     });
     $(".time-slide").delegate("click",".left",function(){
         per.tar = Math.floor(per.t) - 1;
