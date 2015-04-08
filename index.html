@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<% 
+    var path = request.data._build_ ? 'http://tmisc.home.news.cn/story/news_timeline/' : '';
+%>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>这一次，“飞人”终于停下来了_新时空_新华网</title>
     <meta name="keywords" content="刘翔" />
     <meta name="description" content="他曾在奥运会的发源地雅典夺得冠军，却在自家门前因伤退赛。他是中国田径的金字招牌，是集奥运会冠军、世锦赛冠军、世界纪录保持者于一身的伟大运动员。但，再伟大的运动员，也终有离开赛场的那一天。2015年4月7日，他正式宣布退役，告别“飞人”生涯。祝福刘翔！" />
     <link rel="stylesheet" href="http://tmisc.home.news.cn/story/css/global.css">
-    <link rel="stylesheet" href="<%= request.data._build_ ? 'http://tmisc.home.news.cn/story/news_timeline/css/t.css' : 'css/t.css' %>">
+    <link rel="stylesheet" href="<%=path%>css/t.css">
 </head>
 <body>
 
-<img src="http://tmisc.home.news.cn/story/news_timeline/img/bg.jpg" alt="新时空背景" class="bg">  
-<img src="http://tmisc.home.news.cn/story/news_timeline/img/way.png" alt="事件轨道" class="bg bigger" id="way">
-<img src="http://tmisc.home.news.cn/story/news_timeline/img/star.png" alt="星星" class="bg" id="stars">
+<img src="<%=path%>img/bg.jpg" alt="新时空背景" class="bg">  
+<img src="<%=path%>img/way.png" alt="事件轨道" class="bg bigger" id="way">
+<img src="<%=path%>img/star.png" alt="星星" class="bg" id="stars">
 <div class="container">
     <div class="time-label"></div>
     <ul class="list" id="list">
         
     </ul>
     <div class="time-slide">
-        <img src="http://tmisc.home.news.cn/story/news_timeline/img/slide.png" alt="事件切换台" class="bg">
+        <img src="<%=path%>img/slide.png" alt="事件切换台" class="bg">
         <div class="slide-holder">
             <ul id="slide"></ul>
         </div>
@@ -405,7 +408,7 @@ window.data = {
         packages : [{
             name : 'tl',
             ignorePackageNameInUri : true,
-            path : '<%= request.data._build_ ? "http://tmisc.home.news.cn/story/news_timeline/js/" : "js/"%>'
+            path : '<%=path%>js/'
         }]
     });
     KISSY.use("tl/index");
