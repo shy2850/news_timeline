@@ -236,7 +236,7 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
         body = document.body;
     $(document).on("mousewheel",function(e){
         per.tar = per.t - e.deltaY * .25;
-        per.t = per.tar;
+        //per.t = per.tar;
         return false;
     }).on("keyup",function(e){
         switch(e.keyCode){

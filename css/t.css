@@ -6,6 +6,9 @@ html,body{
     font: normal 1em/30px Arial,"Microsoft Yahei","黑体";
     color: #fff;
 }
+::selection{
+    background: none;
+}
 img.bg, .container, .list{
     position: absolute;
     left: 0;
