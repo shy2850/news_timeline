@@ -74,6 +74,9 @@ img.bg.bigger{
     width: 94%;
     margin: 0 auto;
 }
+.list li h4 a{
+    color: #fff;
+}
 .list li .timeStamp{
     font-size: .9em;
 }

@@ -134,9 +134,9 @@ S.add("tl/render",function(S,D){
             d.setTime( i.time );
             i.timeStamp = D.format(d, m.stamp);
             i.timeDate = D.format(d, m.date);
-
+            i.titleWithUrl = i.url ? ('<a href="'+i.url+'" target="_blank">'+i.title+'</a>') : i.title;
             slides.push( D.format(d, m.stamp) );
-            lis.push( '<li class="'+(idx%2?"right":"left")+'" data-timedate="{{timeDate}}" title="{{desc}}"><img class="bg" src="{{typeData}}@300x200" alt="{{title}}"/><div class="title-info"><h4>{{title}}</h4></div></li>'.replace(/\{\{(\w+)\}\}/g,function(w,k){
+            lis.push( '<li class="'+(idx%2?"right":"left")+'" data-timedate="{{timeDate}}" title="{{desc}}"><img class="bg" src="{{typeData}}@300x200" alt="{{title}}"/><div class="title-info"><h4>{{titleWithUrl}}</h4></div></li>'.replace(/\{\{(\w+)\}\}/g,function(w,k){
                 return i[k] || "";
             }) );
         });
@@ -266,8 +266,12 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
     }).delegate("click",".right",function(){
         per.tar = Math.floor(per.t) + 1;
     });
-    ul.children().on("click",function(){
-        per.tar = $(this).index();
+    ul.children().on("click",function(e){
+        var index = $(this).index();
+        if( per.tar !== index ){
+            per.tar = $(this).index();
+            e.preventDefault();
+        }
     });
     slide.children().on("click",function(){
         per.tar = $(this).index();
