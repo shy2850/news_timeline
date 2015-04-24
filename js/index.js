@@ -130,13 +130,13 @@ S.add("tl/render",function(S,D){
         var lis = [], slides = [];
         S.each(list,function(i,idx){
             var d = new Date()
-                m = tm[i.timeLevel || 4]; // 默认使用分钟级别展示
+                m = tm[i.timeLevel]; // 默认使用分钟级别展示
             d.setTime( i.time );
             i.timeStamp = D.format(d, m.stamp);
             i.timeDate = D.format(d, m.date);
             i.titleWithUrl = i.url ? ('<a href="'+i.url+'" target="_blank">'+i.title+'</a>') : i.title;
             slides.push( D.format(d, m.stamp) );
-            lis.push( '<li class="'+(idx%2?"right":"left")+'" data-timedate="{{timeDate}}" title="{{desc}}"><img class="bg" src="{{typeData}}@300x200" alt="{{title}}"/><div class="title-info"><h4>{{titleWithUrl}}</h4></div></li>'.replace(/\{\{(\w+)\}\}/g,function(w,k){
+            lis.push( '<li class="'+(idx%2?"right":"left")+'" data-timedate="{{timeDate}}" data-href="{{url}}" title="{{desc}}"><img class="bg" src="{{typeData}}@300x200" alt="{{title}}"/><div class="title-info"><h4>{{titleWithUrl}}</h4></div></li>'.replace(/\{\{(\w+)\}\}/g,function(w,k){
                 return i[k] || "";
             }) );
         });
@@ -149,7 +149,9 @@ S.add("tl/render",function(S,D){
 // 场景定位
 S.add("tl/snapshot",function(S,Node){
     var $ = Node.all,
-        label = $(".time-label");
+        label = $(".time-label"),
+        stars = $("#stars"),
+        bg = stars.prev().prev();
     var SnapShot = function(ul,slide){
         var lis = ul.children(),
             slides = slide.children(),
@@ -188,11 +190,24 @@ S.add("tl/snapshot",function(S,Node){
                 var opacity = i + 1 - p.t;  // 放大和缩小的透明度比例不同, 分别做算法
                 style.opacity = opacity // <= 1 ? opacity : (1 - opacity / length / 2);
                 ele.css(style);
+                $("h4",ele).css({
+                    fontSize: 18 * zoom 
+                });
 
                 if( i === index ){
                     label.html( ele.attr("data-timedate") );
                 }
             });
+            
+            if( ! (S.UA.ie < 9) ){
+                stars.css({
+                    transform: "scale("+ ( 1 + p.t / length) +")"
+                });
+                bg.css({
+                    transform: "scale("+ ( 1 + p.t / length / 2) +")"
+                });
+            }
+
         };
     };
     return SnapShot;
@@ -213,6 +228,7 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
     // 列表渲染
     ul.html( render.list );
     slide.html( render.slides );
+    way.prev().attr({src: data.content[0].bgPic || undefined});
 
     //场景设置
     var snap = new SnapShot(ul,slide),
@@ -267,10 +283,14 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
         per.tar = Math.floor(per.t) + 1;
     });
     ul.children().on("click",function(e){
-        var index = $(this).index();
+        var _t = $(this),
+            index = _t.index();
         if( per.tar !== index ){
             per.tar = $(this).index();
             e.preventDefault();
+        }else{
+            var href = _t.attr("data-href");
+            href && window.open(href);
         }
     });
     slide.children().on("click",function(){
