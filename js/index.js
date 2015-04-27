@@ -234,13 +234,23 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
     var snap = new SnapShot(ul,slide),
         per = {
             t: 0,
-            tar: 0
+            tar: 0,
+            speed: .0625
         };
+    if( navigator.userAgent.match(/mobile/i) ){     
+        // 移动端渲染比较慢，把比率提高。
+        per.speed = .125;
+    }else{
+        // 高度过大，渲染比较慢，直接把比率提高。
+        $(window).on("resize", function(e){
+            per.speed = $(this).height() > 400 ? .125 : .0625;
+        }).fire("resize");
+    }
 
     // 场景每帧效果设置
     R.addTimeout("snap",function(){
         if( Math.abs(per.tar - per.t) > .01 ){
-            per.t += per.tar > per.t ? .0625 : -0.0625
+            per.t += per.tar > per.t ? per.speed : -per.speed
         }
         snap.on(per);
     },20);
@@ -251,7 +261,7 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
         perSet = per.t,
         body = document.body;
     $(document).on("mousewheel",function(e){
-        per.tar = per.t - e.deltaY * .25;
+        per.tar = per.t + e.deltaY * per.speed * 4;
         //per.t = per.tar;
         return false;
     }).on("keyup",function(e){
@@ -262,21 +272,23 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
             case 40: per.tar = Math.floor(per.t) + 1; break;
         }
         return false;
-    }).on("mousedown",function(e){
-        mousedown = true;
-        downY = e.clientY;
-        perSet = per.t;
-        body.style.cursor = "move";
-    }).on("mouseup",function(e){
-        mousedown = false;
-        body.style.cursor = "default";
-    }).on("mousemove",function(e){
-        if( mousedown ){
-            per.tar = perSet + ( (e.clientY - downY)/4 | 0) * .0625;
-        }
-    }).on("touchmove",function(e){
-        e.preventDefault();
-    });
+    })
+    // .on("mousedown",function(e){
+    //     mousedown = true;
+    //     downY = e.clientY;
+    //     perSet = per.t;
+    //     body.style.cursor = "move";
+    // }).on("mouseup",function(e){
+    //     mousedown = false;
+    //     body.style.cursor = "default";
+    // }).on("mousemove",function(e){
+    //     if( mousedown ){
+    //         per.tar = perSet + ( (e.clientY - downY)/4 | 0) * per.speed;
+    //     }
+    // }).on("touchmove",function(e){
+    //     e.preventDefault();
+    // })
+    ;
     $(".time-slide").delegate("click",".left",function(){
         per.tar = Math.floor(per.t) - 1;
     }).delegate("click",".right",function(){
