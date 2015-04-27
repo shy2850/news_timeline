@@ -319,6 +319,7 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
     slide.parent().append( 
         $('<a href="javascript:void(0);" class="autoRun '+auto.status+'"><img src="'+auto.prefix+'img/run.png'+'" alt="run" title="自动播放" class="to-pause"/><img class="to-run" src="'+auto.prefix+'img/pause.png'+'" alt="pause" title="暂停播放"/></a>') 
     ).delegate("click",".autoRun", function(e){
+        auto.status = auto.status === "pause" ? "run" : "pause";
         $(e.currentTarget).toggleClass("run").toggleClass("pause");
     });
 
