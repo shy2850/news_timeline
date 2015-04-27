@@ -309,6 +309,30 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
         per.tar = $(this).index();
     });
 
+    //自动播放效果
+    var auto = {
+        status: (data.autoRun?"pause":"run"),
+        prefix: "http://tmisc.home.news.cn/story/news_timeline/",
+        add: 1
+    };
+
+    slide.parent().append( 
+        $('<a href="javascript:void(0);" class="autoRun '+auto.status+'"><img src="'+auto.prefix+'img/run.png'+'" alt="run" title="自动播放" class="to-pause"/><img class="to-run" src="'+auto.prefix+'img/pause.png'+'" alt="pause" title="暂停播放"/></a>') 
+    ).delegate("click",".autoRun", function(e){
+        $(e.currentTarget).toggleClass("run").toggleClass("pause");
+    });
+
+    R.addTimeout("autoRun",function(){
+        if(per.tar >= data.content.length-1){
+            auto.add = -1;
+        }else if( per.tar <= 1 ){
+            auto.add = 1;
+        }
+        if( auto.status === "pause" ){
+            per.tar = (per.tar + auto.add) % data.content.length; 
+        }
+    },400);
+
 },{requires:["node","tl/requestAFrame","tl/render","tl/snapshot"]});
 
 
