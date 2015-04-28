@@ -167,7 +167,7 @@ S.add("tl/snapshot",function(S,Node){
             slide.css({
                 left: p.t > 2 ? ( 2 - p.t ) * 98 : 0
             });
-            if( p.t == p.tar ){
+            if( p.t | 0 == p.tar | 0 ){
                 slides.item(index).addClass("current").siblings().removeClass("current");
             }
             lis.each(function(ele,i){
@@ -313,8 +313,8 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
     var auto = {
         status: (data.autoRun?"pause":"run"),
         prefix: "http://tmisc.home.news.cn/story/news_timeline/",
-        add: .0625,
-        speed: .00625
+        add: .125,
+        speed: .0125
     };
 
     slide.parent().append( 
