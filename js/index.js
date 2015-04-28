@@ -232,24 +232,24 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
 
     //场景设置
     var snap = new SnapShot(ul,slide),
+        win = $(window),
         per = {
             t: 0,
             tar: 0,
-            speed: .0625
+            speed: .0625,
+            reset: function(){
+                if( navigator.userAgent.match(/mobile/i) ){     
+                    this.speed = .125;
+                }else{
+                    this.speed = win.height() > 400 ? .125 : .0625;
+                }
+            }
         };
-    if( navigator.userAgent.match(/mobile/i) ){     
-        // 移动端渲染比较慢，把比率提高。
-        per.speed = .125;
-    }else{
-        // 高度过大，渲染比较慢，直接把比率提高。
-        $(window).on("resize", function(e){
-            per.speed = $(this).height() > 400 ? .125 : .0625;
-        }).fire("resize");
-    }
+    
 
     // 场景每帧效果设置
     R.addTimeout("snap",function(){
-        if( Math.abs(per.tar - per.t) > .01 ){
+        if( Math.abs(per.tar - per.t) > .001 ){
             per.t += per.tar > per.t ? per.speed : -per.speed
         }
         snap.on(per);
@@ -313,26 +313,48 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
     var auto = {
         status: (data.autoRun?"pause":"run"),
         prefix: "http://tmisc.home.news.cn/story/news_timeline/",
-        add: 1
+        add: .0625,
+        speed: .00625
     };
 
     slide.parent().append( 
         $('<a href="javascript:void(0);" class="autoRun '+auto.status+'"><img src="'+auto.prefix+'img/run.png'+'" alt="run" title="自动播放" class="to-pause"/><img class="to-run" src="'+auto.prefix+'img/pause.png'+'" alt="pause" title="暂停播放"/></a>') 
     ).delegate("click",".autoRun", function(e){
-        auto.status = auto.status === "pause" ? "run" : "pause";
+        if(auto.status === "pause"){
+            auto.status = "run";
+        }else{
+            auto.status = "pause";
+        }
         $(e.currentTarget).toggleClass("run").toggleClass("pause");
     });
 
     R.addTimeout("autoRun",function(){
         if(per.tar >= data.content.length-1){
-            auto.add = -1;
+            auto.add = -Math.abs(auto.add);
         }else if( per.tar <= 1 ){
-            auto.add = 1;
+            auto.add = Math.abs(auto.add);
         }
         if( auto.status === "pause" ){
+            per.speed = auto.speed;
             per.tar = (per.tar + auto.add) % data.content.length; 
+        }else{
+            per.reset();
         }
-    },400);
+    },200);
+
+
+    // 设备速度调整
+    if( navigator.userAgent.match(/mobile/i) ){     
+        // 移动端渲染比较慢，把比率提高。
+        per.speed = .5;
+        auto.speed = .05;
+        auto.add = .5;
+    }else{
+        // 高度过大，渲染比较慢，直接把比率提高。
+        win.on("resize", function(e){
+            per.reset();
+        }).fire("resize");
+    }
 
 },{requires:["node","tl/requestAFrame","tl/render","tl/snapshot"]});
 
