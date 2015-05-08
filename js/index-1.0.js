@@ -1,8 +1,3 @@
-/**
- * 这一版本代码要多坑爹有多坑爹, 相当多的冗余代码和超大资源等 
- * 这些都是产品要求的, 我劝说失败以后无奈只能修改。 
- * 如果需要使用, 请参考同路径下的 index-1.0.js 
-**/
 ;(function(S){
 
 // 定时器封装
@@ -141,7 +136,7 @@ S.add("tl/render",function(S,D){
             i.timeDate = D.format(d, m.date);
             i.titleWithUrl = i.url ? ('<a href="'+i.url+'" target="_blank">'+i.title+'</a>') : i.title;
             slides.push( D.format(d, m.stamp) );
-            lis.push( '<li class="'+(idx%2?"right":"left")+'" data-timedate="{{timeDate}}" data-href="{{url}}" title="{{desc}}"><img class="bg" src="{{typeData}}@300x200" alt="{{title}}"/><div class="title-info"><h4>{{titleWithUrl}}</h4><div class="time-info">{{timeDate}}</div></div></li>'.replace(/\{\{(\w+)\}\}/g,function(w,k){
+            lis.push( '<li class="'+(idx%2?"right":"left")+'" data-timedate="{{timeDate}}" data-href="{{url}}" title="{{desc}}"><img class="bg" src="{{typeData}}@300x200" alt="{{title}}"/><div class="title-info"><h4>{{titleWithUrl}}</h4></div></li>'.replace(/\{\{(\w+)\}\}/g,function(w,k){
                 return i[k] || "";
             }) );
         });
@@ -154,7 +149,7 @@ S.add("tl/render",function(S,D){
 // 场景定位
 S.add("tl/snapshot",function(S,Node){
     var $ = Node.all,
-        label = $(".time-label").html( document.title.replace( "_新时空_新华网", "" ) ),
+        label = $(".time-label"),
         stars = $("#stars"),
         bg = stars.prev().prev();
     var SnapShot = function(ul,slide){
@@ -200,9 +195,9 @@ S.add("tl/snapshot",function(S,Node){
                 });
 
                 // 顶部换时间
-                // if( i === index ){
-                //     label.html( ele.attr("data-timedate") );
-                // }
+                if( i === index ){
+                    label.html( ele.attr("data-timedate") );
+                }
             });
             
             if( ! (S.UA.ie < 9) ){
@@ -226,7 +221,6 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
         width = doc.width(),
         height = doc.height(),
         way = $("#way"),
-        bg = way.prev(),
         stars = $("#stars"),
         ul = $("#list"),
         slide = $("#slide"),
@@ -235,16 +229,7 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
     // 列表渲染
     ul.html( render.list );
     slide.html( render.slides );
-    $(".time-slide").hide();
-    way.attr({
-        src: way.attr("src").replace(/\.png/,"-2.png")
-    });
-    bg.attr({
-        src: bg.attr("src").replace(/\.jpg/,"-2.jpg") 
-    });
-    stars.attr({
-        src: stars.attr("src").replace(/\.png/,"-2.png")
-    });
+    way.prev().attr({src: data.content[0].bgPic || undefined});
 
     //场景设置
     var snap = new SnapShot(ul,slide),
@@ -326,12 +311,6 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
             auto.status = "pause";
         }
         $(e.currentTarget).toggleClass("run").toggleClass("pause");
-    });
-
-    $( ".container" ).on("mouseenter", function(){
-        auto.status = "run";
-    }).on("mouseleave", function(){
-        auto.status = "pause";
     });
 
     R.addTimeout("autoRun",function(){
