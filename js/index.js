@@ -235,7 +235,6 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
     // 列表渲染
     ul.html( render.list );
     slide.html( render.slides );
-    $(".time-slide").hide();
     way.attr({
         src: way.attr("src").replace(/\.png/,"-2.png")
     });
@@ -279,6 +278,10 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
     $(document).on("mousewheel",function(e){
         per.tar = per.t + e.deltaY * per.speed * 4;
         //per.t = per.tar;
+        if( auto.status === "pause" ){
+            auto.status = "run";
+            $(".autoRun").toggleClass("run").toggleClass("pause");
+        }
         return false;
     }).on("keyup",function(e){
         switch(e.keyCode){
@@ -326,12 +329,6 @@ S.add("tl/index",function(S,Node,R,Render,SnapShot){
             auto.status = "pause";
         }
         $(e.currentTarget).toggleClass("run").toggleClass("pause");
-    });
-
-    $( ".container" ).on("mouseenter", function(){
-        auto.status = "run";
-    }).on("mouseleave", function(){
-        auto.status = "pause";
     });
 
     R.addTimeout("autoRun",function(){

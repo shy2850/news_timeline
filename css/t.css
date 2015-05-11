@@ -64,8 +64,7 @@ img.bg.bigger{
     width: 40%;
     height: 50%;
     bottom: 20%;
-    border: 2px solid transparent;
-    border-radius: 11px;
+    border: 2px solid #fff;
     -webkit-box-reflect: below 1px -webkit-gradient(linear, 0% 100%,400% 100%, from(rgba(255,255,255,0)), to(white));
 }
 .list li.left{
@@ -79,9 +78,6 @@ img.bg.bigger{
     box-shadow: 0 0 2px #3495ef;
     cursor: pointer;
 }
-.list li img{
-    border-radius: 11px;
-}
 
 .list .title-info{
     position: absolute;
@@ -92,7 +88,6 @@ img.bg.bigger{
     -webkit-background-image: -webkit-linear-gradient(rgba(0,0,0,.0) 0%, rgba(0,0,0,.6) 100%);
     -o-background-image: -o-linear-gradient(rgba(0,0,0,.0) 0%, rgba(0,0,0,.6) 100%);
     background-image: linear-gradient(rgba(0,0,0,.0) 0%, rgba(0,0,0,.6) 100%);
-    border-radius: 0 0 11px 11px;
 }
 .title-info .time-info{
     position: absolute;
@@ -116,7 +111,7 @@ img.bg.bigger{
     position: absolute;
     z-index: 999;
     left: 1%;
-    bottom: 6%;
+    bottom: 1%;
 }
 .slide-holder{
     width: 90%;
